@@ -8,26 +8,26 @@
 import heapq
 
 def dijkstra_alg(G, start):
-    node_distance = {node: float('inf') for node in G}
-    node_distance[start] = 0    
+    node_distance = {node: float('inf') for node in G} # set all distance to inf
+    node_distance[start] = 0 # set distance of the starting node to 0
 
-    priority_queue = [(0, start)]
+    priority_queue = [(0, start)] # priority queue to go to the next nearest node
 
     while len(priority_queue) > 0:
         
         current_distance, current_node = heapq.heappop(priority_queue)
 
         if current_distance > node_distance[current_node]:
-            continue
+            continue # if the new distance is larger than the existing one, skip it
 
-        for neighbour, weight in G[current_node].items():
+        for neighbour, weight in G[current_node].items(): # calculate the distance of all neighbours node and push to the priority queue
             distance = current_distance + weight
 
             if distance < node_distance[neighbour]:
                 node_distance[neighbour] = distance
                 heapq.heappush(priority_queue, (distance, neighbour))
     
-    charging_station = [(station, length) for station, length in node_distance.items() if station in ['H', 'K', 'Q', 'T'] ]
+    charging_station = [(station, length) for station, length in node_distance.items() if station in ['H', 'K', 'Q', 'T'] ] 
 
     return sorted(charging_station, key= lambda x: x[1])
 
@@ -70,7 +70,7 @@ if __name__ == '__main__':
             if starting_node in node_list:
                 dijkstra  = dijkstra_alg(G, starting_node)
                 print(f'Length from {starting_node} to: ')
-                for i, (j, k) in enumerate(dijkstra, 1):
+                for i, (j, k) in enumerate(dijkstra, 1): # rank charging station from nearest to highest
                     print(f'{i}. Charging station {j}: {k}')
                 
                 print('-----------------------------------------------------------------------------------------')
