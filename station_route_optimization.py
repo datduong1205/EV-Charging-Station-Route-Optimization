@@ -1,7 +1,7 @@
 # EV Charging Station Route Optimization Project
 # Group 3
 # Quincy Chan - 100891459
-# Mujtaba Hussaini -
+# Mujtaba Hussaini - 100827655
 # Le Minh Dat Duong - 100886108
 # Shadman Shan - 100867403
 
@@ -61,7 +61,7 @@ if __name__ == '__main__':
     }
 
     while True:
-        node_list = ['ABCDEFGHIJKLMNOPQRSTUVW']
+        node_list = 'ABCDEFGHIJKLMNOPQRSTUVW'
         choice = int(input('Options:\n1. Find nearest charging station\n2. Exit\nChoose: ').strip())
 
         if choice == 1:
